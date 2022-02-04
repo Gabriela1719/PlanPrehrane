@@ -1,6 +1,8 @@
 package com.example.planprehrane.Services;
 
 import com.example.planprehrane.Models.Namirnice;
+import com.example.planprehrane.Models.Rezultat;
+import com.example.planprehrane.Models.User;
 import com.example.planprehrane.Repositories.NamirniceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,8 +28,8 @@ public class NamirniceService {
         Optional<Namirnice> result = namirniceRepository.findById(id_namirnice);
 
         if (result.isPresent()){
-            Namirnice namirnica = result.get();
-            namirniceRepository.delete(namirnica);
+            Namirnice namirnice = result.get();
+            namirniceRepository.delete(namirnice);
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -44,4 +46,26 @@ public class NamirniceService {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    public ResponseEntity<Namirnice> updateNamirnice(Long nam_id, Namirnice namirnice) {
+        Optional<Namirnice> namirnice1 = namirniceRepository.findById(nam_id);
+
+        if(namirnice1.isPresent()) {
+            Namirnice namirnice2 = namirnice1.get();
+            namirnice2.setNaziv(namirnice.getNaziv());
+            namirnice2.setNutritivna_vrijednost(namirnice.getNutritivna_vrijednost());
+            return new ResponseEntity<>(namirniceRepository.save(namirnice2), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    public ResponseEntity<Namirnice> getNamirniceById(long nam_id) {
+        Optional<Namirnice> namirnice = namirniceRepository.findById(nam_id);
+
+        if (namirnice.isPresent()) {
+            return new ResponseEntity<>(namirnice.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

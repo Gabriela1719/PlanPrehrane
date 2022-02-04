@@ -1,7 +1,6 @@
 package com.example.planprehrane.Models;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Entity
@@ -16,8 +15,6 @@ public class User {
     private String password;
     @Column(name = "email")
     private String email;
-   /* @Column(name = "loggedIn")
-    private boolean loggedIn;*/
 
     public User(){}
     public User(String username, String password, String email){
@@ -38,10 +35,6 @@ public class User {
         return password;
     }
 
-  /*  public boolean isLoggedIn() {
-        return loggedIn;
-    }*/
-
     public void setId(Long id) {
         Id = id;
     }
@@ -53,10 +46,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    /*public void setLoggedIn(boolean loggedIn) {
-        this.loggedIn = loggedIn;
-    }*/
 
     public String getEmail() {
         return email;

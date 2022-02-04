@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/api/admin")
 public class AdminController {
 
     @Autowired
@@ -41,11 +41,15 @@ public class AdminController {
     }
 
     // DELETE namirnice
-    @DeleteMapping("/{id_namirnice}")
-    public ResponseEntity<String> deleteNamirnice(@PathVariable("id_namirnice") Long id_namirnice){
+    @DeleteMapping("/namirnice/{id_namirnice}")
+    public ResponseEntity<String> deleteNamirnice(@PathVariable Long id_namirnice){
         return namirniceService.deleteNamirnice(id_namirnice);
     }
-
+    //PUT namirnice
+    @PutMapping("/{nam_id}")
+    public ResponseEntity<Namirnice> updateNamirnice(@PathVariable("nam_id") Long nam_id, @RequestBody Namirnice namirnice){
+        return namirniceService.updateNamirnice(nam_id, namirnice);
+    }
     // POST namirnice
     @PostMapping("/namirnice")
     public ResponseEntity<String> addNew (@RequestBody Namirnice namirnice){
@@ -57,13 +61,13 @@ public class AdminController {
         return planIshraneService.getPlan();
     }
     // POST plan_ishrane
-    @PostMapping
+    @PostMapping("/plan")
     public ResponseEntity<String> addPlan (@RequestBody PlanIshrane planIshrane){
         return planIshraneService.addPlan(planIshrane);
     }
     // DELETE plan_ishrane
-    @DeleteMapping("/{id_plan}")
-    public ResponseEntity<String> deletePlan(@PathVariable("id_plan") Long id_plan){
+    @DeleteMapping("/plan/{id_plan}")
+    public ResponseEntity<String> deletePlan(@PathVariable Long id_plan){
         return planIshraneService.deletePlan(id_plan);
     }
     // GET rezultat
@@ -77,4 +81,6 @@ public class AdminController {
     public ResponseEntity<List<User>> getUsers() {
         return userService.getUsers();
     }
+
+
 }

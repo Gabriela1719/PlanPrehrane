@@ -17,7 +17,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController{
 
     @Autowired
@@ -98,11 +98,17 @@ public class UserController{
         return namirniceService.getNamirnice();
     }
 
-    // GET Plan_Ishrane
+    // GET namirnice byId
+    @GetMapping("/{nam_id}")
+    public ResponseEntity<Namirnice> getNamirniceById(@PathVariable("nam_id") long nam_id) {
+        return namirniceService.getNamirniceById(nam_id);
+    }
+
+   /* // GET Plan_Ishrane
     @GetMapping("/plan")
     public ResponseEntity<List<PlanIshrane>> getPlan() {
         return planIshraneService.getPlan();
-    }
+    }*/
 
     // GET rezultat
     @GetMapping("/result")
@@ -120,5 +126,13 @@ public class UserController{
     }
 
     //PUT users
-
+    @PutMapping("/{user_id}")
+    public ResponseEntity<User> updateUser(@PathVariable("user_id") Long user_id, @RequestBody User user){
+        return userService.updateUser(user_id, user);
+    }
+    // POST rezultat
+    @PostMapping("/result")
+    public ResponseEntity<String> addRezultat (@RequestBody Rezultat rezultat){
+        return rezultatService.addRezultat(rezultat);
+    }
 }

@@ -22,15 +22,15 @@ public class Rezultat {
         return Id;
     }
 
-    public float vrijednost() {
+    public float getVrijednost() {
         return vrijednost;
     }
 
     public void setId(Long id) {
-        this.Id = id;
+        Id = id;
     }
 
-    public void setPlan_ishrane(float vrijednost) {
+    public void setVrijednost(float vrijednost) {
         this.vrijednost = vrijednost;
     }
 

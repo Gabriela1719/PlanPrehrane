@@ -32,4 +32,15 @@ public class RezultatService {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    public ResponseEntity<String> addRezultat(Rezultat rezultat) {
+        List<Rezultat> rezultati = rezultatRepository.findAll();
+
+        for(Rezultat rezultat1 : rezultati)
+            if (rezultat.getVrijednost() == rezultat1.getVrijednost())
+                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+
+        rezultatRepository.save(rezultat);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 }

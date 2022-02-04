@@ -17,8 +17,8 @@ public class PlanIshrane {
     }
     public PlanIshrane(){}
 
-   /* @OneToMany(mappedBy = "planIshrane", cascade = CascadeType.ALL)
-    private List<Namirnice> namirniceList;*/
+    @OneToMany(mappedBy = "planIshrane", cascade = CascadeType.ALL)
+    private List<Namirnice> namirniceList;
 
     public Long getId() {
         return Id;
@@ -35,6 +35,7 @@ public class PlanIshrane {
     public void setPlan_ishrane(String plan_ishrane) {
         this.plan_ishrane = plan_ishrane;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
