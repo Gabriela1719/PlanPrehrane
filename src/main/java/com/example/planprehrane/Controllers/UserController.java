@@ -9,6 +9,7 @@ import com.example.planprehrane.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,7 @@ public class UserController{
     private final RezultatService rezultatService;
     @Autowired
     private final UserService userService;
-
+    @Autowired
     UserRepository userRepository;
 
     public UserController(NamirniceService namirniceService, PlanIshraneService planIshraneService, RezultatService rezultatService, UserService userService){
@@ -63,12 +64,10 @@ public class UserController{
 
         for (User other : users) {
             if (other.equals(user)) {
-                user.setLoggedIn(true);
-                userRepository.save(user);
+               // user.setLoggedIn(true);
                 return Status.SUCCESS;
             }
         }
-
         return Status.FAILURE;
     }
 
@@ -78,8 +77,8 @@ public class UserController{
 
         for (User other : users) {
             if (other.equals(user)) {
-                user.setLoggedIn(false);
-                userRepository.save(user);
+              //  user.setLoggedIn(false);
+                //userRepository.save(user);
                 return Status.SUCCESS;
             }
         }

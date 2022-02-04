@@ -19,8 +19,8 @@ public class Namirnice {
     }
     public Namirnice(){}
 
-    @ManyToOne
-    private PlanIshrane planIshrane;
+   /* @ManyToOne
+    private PlanIshrane planIshrane;*/
 
     public Long getId() {
         return Id;

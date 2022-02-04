@@ -16,8 +16,8 @@ public class User {
     private String password;
     @Column(name = "email")
     private String email;
-    @Column(name = "loggedIn")
-    private boolean loggedIn;
+   /* @Column(name = "loggedIn")
+    private boolean loggedIn;*/
 
     public User(){}
     public User(String username, String password, String email){
@@ -38,9 +38,9 @@ public class User {
         return password;
     }
 
-    public boolean isLoggedIn() {
+  /*  public boolean isLoggedIn() {
         return loggedIn;
-    }
+    }*/
 
     public void setId(Long id) {
         Id = id;
@@ -54,9 +54,9 @@ public class User {
         this.password = password;
     }
 
-    public void setLoggedIn(boolean loggedIn) {
+    /*public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
-    }
+    }*/
 
     public String getEmail() {
         return email;
@@ -77,8 +77,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, username, password,
-                loggedIn);
+        return Objects.hash(Id, username, password);
     }
 
     @Override
@@ -88,7 +87,6 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", loggedIn=" + loggedIn +
                 '}';
     }
 }

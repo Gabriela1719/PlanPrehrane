@@ -17,8 +17,8 @@ public class PlanIshrane {
     }
     public PlanIshrane(){}
 
-    @OneToMany(mappedBy = "planIshrane", cascade = CascadeType.ALL)
-    private List<Namirnice> namirniceList;
+   /* @OneToMany(mappedBy = "planIshrane", cascade = CascadeType.ALL)
+    private List<Namirnice> namirniceList;*/
 
     public Long getId() {
         return Id;

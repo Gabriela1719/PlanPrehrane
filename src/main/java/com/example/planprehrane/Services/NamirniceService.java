@@ -37,7 +37,7 @@ public class NamirniceService {
        List<Namirnice> sveNamirnice = namirniceRepository.findAll();
 
        for(Namirnice namirnice1 : sveNamirnice)
-           if (namirnice1.getNaziv().equals(namirnice1.getNaziv()))
+           if (namirnice.getNaziv().equals(namirnice1.getNaziv()))
                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 
         namirniceRepository.save(namirnice);

@@ -9,10 +9,10 @@ public class Rezultat {
     @GeneratedValue
     private Long Id;
 
-    @Column(name = "plan_ishrane")
-    private String vrijednost;
+    @Column(name = "rezultat")
+    private float vrijednost;
 
-    public Rezultat(String vrijednost){
+    public Rezultat(float vrijednost){
         this.vrijednost = vrijednost;
     }
 
@@ -22,7 +22,7 @@ public class Rezultat {
         return Id;
     }
 
-    public String vrijednost() {
+    public float vrijednost() {
         return vrijednost;
     }
 
@@ -30,7 +30,7 @@ public class Rezultat {
         this.Id = id;
     }
 
-    public void setPlan_ishrane(String vrijednost) {
+    public void setPlan_ishrane(float vrijednost) {
         this.vrijednost = vrijednost;
     }
 
