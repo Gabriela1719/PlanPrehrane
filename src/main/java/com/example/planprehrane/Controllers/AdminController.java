@@ -45,11 +45,6 @@ public class AdminController {
     public ResponseEntity<String> deleteNamirnice(@PathVariable Long id_namirnice){
         return namirniceService.deleteNamirnice(id_namirnice);
     }
-    //PUT namirnice
-    @PutMapping("/{nam_id}")
-    public ResponseEntity<Namirnice> updateNamirnice(@PathVariable("nam_id") Long nam_id, @RequestBody Namirnice namirnice){
-        return namirniceService.updateNamirnice(nam_id, namirnice);
-    }
     // POST namirnice
     @PostMapping("/namirnice")
     public ResponseEntity<String> addNew (@RequestBody Namirnice namirnice){

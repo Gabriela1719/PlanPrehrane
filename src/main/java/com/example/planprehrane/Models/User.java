@@ -1,12 +1,15 @@
 package com.example.planprehrane.Models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "users")
 public class User {
-    @Id
+     @Id
     @GeneratedValue
     private Long Id;
     @Column(name = "username")
