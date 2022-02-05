@@ -12,8 +12,8 @@ public class Namirnice {
     private String naziv;
     @Column(name = "energija")
     private float energija;
-    @Column(name = "bjelancevice")
-    private float bjelancevine;
+    @Column(name = "proteini")
+    private float proteini;
     @Column(name = "masti")
     private float masti;
 
@@ -31,7 +31,7 @@ public class Namirnice {
     }
 
     public float getBjelancevine() {
-        return bjelancevine;
+        return proteini;
     }
 
     public float getMasti() {
@@ -55,7 +55,7 @@ public class Namirnice {
     }
 
     public void setBjelancevine(float bjelancevine) {
-        this.bjelancevine = bjelancevine;
+        this.proteini = bjelancevine;
     }
 
     public void setMasti(float masti) {

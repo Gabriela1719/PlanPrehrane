@@ -1,6 +1,0 @@
-2022-02-04 19:56:43 jdbc[13]: exception
-org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'' (NAMIRNICE: ""PLAN_ISHRANE_ID"" BIGINT)"; SQL statement:
-INSERT INTO "PUBLIC"."NAMIRNICE"("ID","NAZIV","NUTRITIVNA_VRIJEDNOST","PLAN_ISHRANE_ID")VALUES(?,?,?,?) [22018-200]
-2022-02-04 19:56:43 jdbc[13]: exception
-org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'' (NAMIRNICE: ""PLAN_ISHRANE_ID"" BIGINT)"; SQL statement:
-INSERT INTO "PUBLIC"."NAMIRNICE"("ID","NAZIV","NUTRITIVNA_VRIJEDNOST","PLAN_ISHRANE_ID")VALUES(?,?,?,?) [22018-200]
