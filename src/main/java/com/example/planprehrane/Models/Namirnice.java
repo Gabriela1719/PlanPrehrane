@@ -16,6 +16,8 @@ public class Namirnice {
     private float proteini;
     @Column(name = "masti")
     private float masti;
+    @Column(name = "ugljikohidrati")
+    private float ugljikohidrati;
 
 
     public Namirnice(String naziv){
@@ -36,6 +38,10 @@ public class Namirnice {
 
     public float getMasti() {
         return masti;
+    }
+
+    public float getUgljikohidrati() {
+        return ugljikohidrati;
     }
 
     public PlanIshrane getPlanIshrane() {
@@ -60,6 +66,9 @@ public class Namirnice {
 
     public void setMasti(float masti) {
         this.masti = masti;
+    }
+    public void setUgljikohidrati(float ugljikohidrati) {
+        this.ugljikohidrati = ugljikohidrati;
     }
     public void setId(Long id) {
         Id = id;
