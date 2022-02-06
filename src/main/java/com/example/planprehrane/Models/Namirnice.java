@@ -32,7 +32,7 @@ public class Namirnice {
         return energija;
     }
 
-    public float getBjelancevine() {
+    public float getProteini() {
         return proteini;
     }
 
@@ -60,8 +60,8 @@ public class Namirnice {
         this.energija = energija;
     }
 
-    public void setBjelancevine(float bjelancevine) {
-        this.proteini = bjelancevine;
+    public void setProteini(float proteini) {
+        this.proteini = proteini;
     }
 
     public void setMasti(float masti) {
