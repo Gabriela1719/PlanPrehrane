@@ -12,6 +12,9 @@ public class Rezultat {
     @Column(name = "rezultat")
     private float vrijednost;
 
+    @ManyToOne
+    private User user;
+
     public Rezultat(float vrijednost){
         this.vrijednost = vrijednost;
     }

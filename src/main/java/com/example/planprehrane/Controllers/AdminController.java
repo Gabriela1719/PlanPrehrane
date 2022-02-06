@@ -46,7 +46,7 @@ public class AdminController {
         return namirniceService.deleteNamirnice(id_namirnice);
     }
     // POST namirnice
-    @PostMapping("/namirnice")
+    @PostMapping("/")
     public ResponseEntity<String> addNew (@RequestBody Namirnice namirnice){
         return namirniceService.addNew(namirnice);
     }

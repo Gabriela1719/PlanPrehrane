@@ -20,6 +20,9 @@ public class PlanIshrane {
     @OneToMany(mappedBy = "planIshrane", cascade = CascadeType.ALL)
     private List<Namirnice> namirniceList;
 
+    @ManyToOne
+    private User user;
+
     public Long getId() {
         return Id;
     }

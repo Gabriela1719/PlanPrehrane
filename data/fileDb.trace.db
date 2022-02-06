@@ -40,3 +40,6 @@ INSERT INTO "PUBLIC"."NAMIRNICE"("ID","ENERGIJA","MASTI","NAZIV","PROTEINI","PLA
 2022-02-05 19:49:57 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'' (NAMIRNICE: ""PLAN_ISHRANE_ID"" BIGINT)"; SQL statement:
 INSERT INTO "PUBLIC"."NAMIRNICE"("ID","ENERGIJA","MASTI","NAZIV","PROTEINI","PLAN_ISHRANE_ID","UGLJIKOHIDRATI")VALUES(?,?,?,?,?,?,?) [22018-200]
+2022-02-06 17:32:34 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM[*]"; expected "identifier"; SQL statement:
+SELECT * FROM [42001-200]

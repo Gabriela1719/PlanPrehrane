@@ -28,6 +28,9 @@ public class Namirnice {
     @ManyToOne
     private PlanIshrane planIshrane;
 
+    @ManyToOne
+    private User user;
+
     public float getEnergija() {
         return energija;
     }

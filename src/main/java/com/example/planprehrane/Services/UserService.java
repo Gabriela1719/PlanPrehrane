@@ -29,7 +29,7 @@ public class UserService {
         if(user1.isPresent()) {
             User user2 = user1.get();
             user2.setUsername(user.getUsername());
-            user2.setEmail(user.getUsername());
+            user2.setEmail(user.getEmail());
             user2.setPassword(user.getPassword());
             return new ResponseEntity<>(userRepository.save(user2), HttpStatus.OK);
         } else {
