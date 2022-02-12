@@ -1,5 +1,8 @@
 package com.example.planprehrane.payload.response;
 
+import com.example.planprehrane.Models.PlanIshrane;
+import com.example.planprehrane.Models.Rezultat;
+
 import java.util.List;
 
 public class JwtResponse {
@@ -9,13 +12,20 @@ public class JwtResponse {
   private String username;
   private String email;
   private List<String> roles;
+  private List<PlanIshrane> planIshrane;
+  private List<Rezultat> rezultati;
 
-  public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles) {
+  public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles, List<PlanIshrane> planIshrane, List<Rezultat> rezultati) {
     this.token = accessToken;
     this.id = id;
     this.username = username;
     this.email = email;
     this.roles = roles;
+    this.planIshrane = planIshrane;
+    this.rezultati = rezultati;
+  }
+
+  public JwtResponse(String jwt, Long id, String username, String email, Rezultat rezultat, List<String> roles, List<PlanIshrane> planIshrane, List<Rezultat> rezultati) {
   }
 
   public String getAccessToken() {
@@ -60,5 +70,13 @@ public class JwtResponse {
 
   public List<String> getRoles() {
     return roles;
+  }
+
+  public List<PlanIshrane> getPlanIshrane() {
+    return planIshrane;
+  }
+
+  public List<Rezultat> getRezultati() {
+    return rezultati;
   }
 }

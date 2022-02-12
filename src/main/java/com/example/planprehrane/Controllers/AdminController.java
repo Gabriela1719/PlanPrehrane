@@ -2,13 +2,10 @@ package com.example.planprehrane.Controllers;
 
 import com.example.planprehrane.Models.Namirnice;
 import com.example.planprehrane.Models.PlanIshrane;
-import com.example.planprehrane.Models.Rezultat;
 import com.example.planprehrane.Models.User;
 import com.example.planprehrane.Services.NamirniceService;
 import com.example.planprehrane.Services.PlanIshraneService;
-import com.example.planprehrane.Services.RezultatService;
 import com.example.planprehrane.Services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,19 +15,13 @@ import java.util.List;
 @RequestMapping("/api/admin")
 public class AdminController {
 
-    @Autowired
     private final NamirniceService namirniceService;
-    @Autowired
     private final PlanIshraneService planIshraneService;
-    @Autowired
-    private final RezultatService rezultatService;
-    @Autowired
     private final UserService userService;
 
-    public AdminController(NamirniceService namirniceService, PlanIshraneService planIshraneService, RezultatService rezultatService, UserService userService){
+    public AdminController(NamirniceService namirniceService, PlanIshraneService planIshraneService, UserService userService){
         this.namirniceService = namirniceService;
         this.planIshraneService = planIshraneService;
-        this.rezultatService = rezultatService;
         this.userService = userService;
     }
 
@@ -65,17 +56,22 @@ public class AdminController {
     public ResponseEntity<String> deletePlan(@PathVariable Long id_plan){
         return planIshraneService.deletePlan(id_plan);
     }
-    // GET rezultat
-    @GetMapping("/result")
-    public ResponseEntity<List<Rezultat>> getResult() {
-        return rezultatService.getResult();
-    }
-
     //GET users
     @GetMapping("/users")
     public ResponseEntity<List<User>> getUsers() {
         return userService.getUsers();
     }
 
+    //Delete users
+    @DeleteMapping("/users/{user_id}")
+    public ResponseEntity<String> deleteUser(@PathVariable Long user_id){
+        return userService.deleteUser(user_id);
+    }
 
+    // POST rezultat
+    @PostMapping("/{user_id}/plan")
+    public ResponseEntity<PlanIshrane> createPlanIshrane(@PathVariable(value = "user_id") Long user_id,
+                                                 @RequestBody PlanIshrane planRequest) {
+        return planIshraneService.createPlanIshrane(user_id, planRequest);
+    }
 }

@@ -1,0 +1,9 @@
+2022-02-11 13:44:09 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM[*]"; expected "identifier"; SQL statement:
+SELECT * FROM [42001-200]
+2022-02-12 21:10:06 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'' (REZULTAT: ""ID"" BIGINT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."REZULTAT"("ID","REZULTAT","USER_ID")VALUES(?,?,?) [22018-200]
+2022-02-12 21:10:06 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'' (REZULTAT: ""ID"" BIGINT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."REZULTAT"("ID","REZULTAT","USER_ID")VALUES(?,?,?) [22018-200]

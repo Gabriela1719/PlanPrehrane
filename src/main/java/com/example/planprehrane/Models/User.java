@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "users", 
-    uniqueConstraints = { 
+@Table(name = "users",
+    uniqueConstraints = {
       @UniqueConstraint(columnNames = "username"),
-      @UniqueConstraint(columnNames = "email") 
+      @UniqueConstraint(columnNames = "email")
     })
 public class User {
   @Id
@@ -33,13 +33,10 @@ public class User {
   private String password;
 
   @ManyToMany(fetch = FetchType.LAZY)
-  @JoinTable(  name = "user_roles", 
-        joinColumns = @JoinColumn(name = "user_id"), 
+  @JoinTable(  name = "user_roles",
+        joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id"))
   private Set<Role> roles = new HashSet<>();
-
-  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-  private List<Namirnice> namirniceList;
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
   private List<PlanIshrane> planIshrane;
@@ -94,5 +91,43 @@ public class User {
 
   public void setRoles(Set<Role> roles) {
     this.roles = roles;
+  }
+
+  public List<PlanIshrane> getPlanIshrane() {
+    return planIshrane;
+  }
+
+  public List<Rezultat> getRezultati() {
+    return rezultati;
+  }
+
+  public void setPlanIshrane(List<PlanIshrane> planIshrane) {
+    this.planIshrane = planIshrane;
+  }
+
+  public void setRezultati(List<Rezultat> rezultati) {
+    this.rezultati = rezultati;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || !(o instanceof User))
+      return false;
+
+    User other = (User) o;
+
+    if (this.id == null) return false;
+    return this.id.equals(other.getId());
+  }
+
+  @Override
+  public int hashCode() {
+    if (this.id != null) {
+      return this.id.hashCode();
+    } else {
+      return super.hashCode();
+    }
   }
 }

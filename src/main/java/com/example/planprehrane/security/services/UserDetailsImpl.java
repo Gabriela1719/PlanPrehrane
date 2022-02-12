@@ -1,5 +1,7 @@
 package com.example.planprehrane.security.services;
 
+import com.example.planprehrane.Models.PlanIshrane;
+import com.example.planprehrane.Models.Rezultat;
 import com.example.planprehrane.Models.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,14 +26,17 @@ public class UserDetailsImpl implements UserDetails {
   private String password;
 
   private Collection<? extends GrantedAuthority> authorities;
+  private List<PlanIshrane> planIshrane;
+  private List<Rezultat> rezultati;
 
-  public UserDetailsImpl(Long id, String username, String email, String password,
-      Collection<? extends GrantedAuthority> authorities) {
+  public UserDetailsImpl(Long id, String username, String email, String password, List<PlanIshrane> planIshrane,List<Rezultat>rezultati, Collection<? extends GrantedAuthority> authorities) {
     this.id = id;
     this.username = username;
     this.email = email;
     this.password = password;
     this.authorities = authorities;
+    this.planIshrane = planIshrane;
+    this.rezultati = rezultati;
   }
 
   public static UserDetailsImpl build(User user) {
@@ -40,10 +45,12 @@ public class UserDetailsImpl implements UserDetails {
         .collect(Collectors.toList());
 
     return new UserDetailsImpl(
-        user.getId(), 
-        user.getUsername(), 
+        user.getId(),
+        user.getUsername(),
         user.getEmail(),
-        user.getPassword(), 
+        user.getPassword(),
+        user.getPlanIshrane(),
+        user.getRezultati(),
         authorities);
   }
 
@@ -88,6 +95,18 @@ public class UserDetailsImpl implements UserDetails {
   @Override
   public boolean isEnabled() {
     return true;
+  }
+
+  public List<PlanIshrane> getPlanIshrane() {
+    return planIshrane;
+  }
+
+  public void setPlanIshrane(List<PlanIshrane> planIshrane) {
+    this.planIshrane = planIshrane;
+  }
+
+  public List<Rezultat> getRezultati() {
+    return rezultati;
   }
 
   @Override

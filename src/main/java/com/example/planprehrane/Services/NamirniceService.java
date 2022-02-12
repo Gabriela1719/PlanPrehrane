@@ -1,8 +1,6 @@
 package com.example.planprehrane.Services;
 
 import com.example.planprehrane.Models.Namirnice;
-import com.example.planprehrane.Models.Rezultat;
-import com.example.planprehrane.Models.User;
 import com.example.planprehrane.Repositories.NamirniceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,12 +16,12 @@ public class NamirniceService {
     @Autowired
     private NamirniceRepository namirniceRepository;
 
-    // GET namirnice
+    // GET namirnice user pregledava, admin također
     public ResponseEntity<List<Namirnice>> getNamirnice() {
         List<Namirnice> allNamirnice = namirniceRepository.findAll();
         return new ResponseEntity<>(allNamirnice, HttpStatus.OK);
     }
-    // DELETE namirnice
+    // DELETE namirnice - admin brise
     public ResponseEntity<String> deleteNamirnice(Long id_namirnice) {
         Optional<Namirnice> result = namirniceRepository.findById(id_namirnice);
 
@@ -34,7 +32,7 @@ public class NamirniceService {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-    // POST namirnice
+    // POST namirnice - amdin dodaje
     public ResponseEntity<String> addNew(Namirnice namirnice) {
        List<Namirnice> sveNamirnice = namirniceRepository.findAll();
 
@@ -46,6 +44,7 @@ public class NamirniceService {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    //user trazi namirnice po id-u
     public ResponseEntity<Namirnice> getNamirniceById(long nam_id) {
         Optional<Namirnice> namirnice = namirniceRepository.findById(nam_id);
 

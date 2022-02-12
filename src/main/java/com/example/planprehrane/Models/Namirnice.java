@@ -25,12 +25,6 @@ public class Namirnice {
     }
     public Namirnice(){}
 
-    @ManyToOne
-    private PlanIshrane planIshrane;
-
-    @ManyToOne
-    private User user;
-
     public float getEnergija() {
         return energija;
     }
@@ -46,11 +40,6 @@ public class Namirnice {
     public float getUgljikohidrati() {
         return ugljikohidrati;
     }
-
-    public PlanIshrane getPlanIshrane() {
-        return planIshrane;
-    }
-
     public Long getId() {
         return Id;
     }
@@ -79,9 +68,6 @@ public class Namirnice {
 
     public void setNaziv(String naziv) {
         this.naziv = naziv;
-    }
-    public void setPlanIshrane(PlanIshrane planIshrane) {
-        this.planIshrane = planIshrane;
     }
     @Override
     public boolean equals(Object o) {

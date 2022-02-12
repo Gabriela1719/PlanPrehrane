@@ -1,7 +1,10 @@
 package com.example.planprehrane.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "PlanIshrane")
@@ -17,10 +20,10 @@ public class PlanIshrane {
     }
     public PlanIshrane(){}
 
-    @OneToMany(mappedBy = "planIshrane", cascade = CascadeType.ALL)
-    private List<Namirnice> namirniceList;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private User user;
 
     public Long getId() {
@@ -37,6 +40,14 @@ public class PlanIshrane {
 
     public void setPlan_ishrane(String plan_ishrane) {
         this.plan_ishrane = plan_ishrane;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

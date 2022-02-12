@@ -1,9 +1,11 @@
 package com.example.planprehrane.Services;
 
-import com.example.planprehrane.Models.PlanIshrane;
 import com.example.planprehrane.Models.Rezultat;
+import com.example.planprehrane.Models.User;
 import com.example.planprehrane.Repositories.RezultatRepository;
+import com.example.planprehrane.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -15,13 +17,20 @@ import java.util.Optional;
 public class RezultatService {
     @Autowired
     private RezultatRepository rezultatRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-    // GET rezultat
-    public ResponseEntity<List<Rezultat>> getResult() {
-        List<Rezultat> rezultati = rezultatRepository.findAll();
-        return new ResponseEntity<>(rezultati, HttpStatus.OK);
+    // GET rezultat by users id
+   public ResponseEntity<Rezultat> getResult(Long user_id) {
+       Optional<User> users = userRepository.findById(user_id);
+
+       if (users.isPresent()){
+          List <Rezultat> rezultat = users.get().getRezultati();
+           return new ResponseEntity(rezultat, HttpStatus.OK);
+       }
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
-    // DELETE rezultat
+    // DELETE rezultat preko id-a
     public ResponseEntity<String> deleteResult(Long id_result) {
         Optional<Rezultat> result = rezultatRepository.findById(id_result);
 
@@ -32,15 +41,17 @@ public class RezultatService {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
-    public ResponseEntity<String> addRezultat(Rezultat rezultat) {
+    public ResponseEntity<List<Rezultat>> getRezultat() {
         List<Rezultat> rezultati = rezultatRepository.findAll();
+        return new ResponseEntity<>(rezultati, HttpStatus.OK);
+    }
 
-        for(Rezultat rezultat1 : rezultati)
-            if (rezultat.getVrijednost() == rezultat1.getVrijednost())
-                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    public ResponseEntity<Rezultat> createResult(Long user_id, Rezultat resultRequest) {
+        Rezultat rezultat = userRepository.findById(user_id).map(user -> {
+            resultRequest.setUser(user);
+            return rezultatRepository.save(resultRequest);
+        }).orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + user_id));
 
-        rezultatRepository.save(rezultat);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(rezultat, HttpStatus.CREATED);
     }
 }
