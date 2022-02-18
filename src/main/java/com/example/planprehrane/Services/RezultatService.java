@@ -50,7 +50,7 @@ public class RezultatService {
         Rezultat rezultat = userRepository.findById(user_id).map(user -> {
             resultRequest.setUser(user);
             return rezultatRepository.save(resultRequest);
-        }).orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + user_id));
+        }).orElseThrow(() -> new ResourceNotFoundException("Not found User with id = " + user_id));
 
         return new ResponseEntity<>(rezultat, HttpStatus.CREATED);
     }
