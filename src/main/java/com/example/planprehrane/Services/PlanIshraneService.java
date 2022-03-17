@@ -53,7 +53,7 @@ public class PlanIshraneService {
         PlanIshrane planIshrane = userRepository.findById(user_id).map(user -> {
             planRequest.setUser(user);
             return planIshraneRepository.save(planRequest);
-        }).orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + user_id));
+        }).orElseThrow(() -> new ResourceNotFoundException("Not found Plan with id = " + user_id));
 
         return new ResponseEntity<>(planIshrane, HttpStatus.CREATED);
     }
