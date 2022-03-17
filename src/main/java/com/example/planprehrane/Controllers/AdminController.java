@@ -68,7 +68,7 @@ public class AdminController {
         return userService.deleteUser(user_id);
     }
 
-    // POST rezultat
+    // POST plan to user by id
     @PostMapping("/{user_id}/plan")
     public ResponseEntity<PlanIshrane> createPlanIshrane(@PathVariable(value = "user_id") Long user_id,
                                                  @RequestBody PlanIshrane planRequest) {
